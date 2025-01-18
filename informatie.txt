@@ -1,0 +1,20 @@
+werken met datum tijd velden in MySQL
+
+
+
+INSERT INTO table_name (date_field)
+VALUES (STR_TO_DATE('31-12-2022', '%d-%m-%Y'));
+
+SELECT DATE_FORMAT(date_field, '%d-%m-%Y') AS dutch_date
+FROM table_name;
+
+Time zone gebruiken omdat de serverless function overal kan worden uitgevoerd.
+
+SET TIME_ZONE = '+01:00';  -- Set the time zone to Amsterdam (CET)
+INSERT INTO table_name (date_field)
+VALUES (NOW());  -- Insert the current date and time
+
+Alternatief:
+SET TIME_ZONE = '+01:00';  -- Set the time zone to Amsterdam (CET)
+INSERT INTO table_name (date_field)
+VALUES (CURRENT_TIMESTAMP);  -- Insert the current date and time
